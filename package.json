@@ -1,0 +1,13 @@
+{
+  "name": "mc-js",
+  "version": "0.0.0",
+  "description": "mc-js",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "ansi-color": "^0.2.1",
+    "minecraft-protocol": "^1.11.0"
+  }
+}
