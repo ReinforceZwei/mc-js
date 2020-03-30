@@ -35,6 +35,9 @@
     <Compile Include="config.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EventHandler.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>

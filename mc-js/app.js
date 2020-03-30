@@ -1,15 +1,17 @@
 'use strict';
 
 var fs = require("fs");
-
 var mc = require("minecraft-protocol");
-
-var chatParser = require("./Chat/Chat");
+var EventHandler = require("./EventHandler");
 
 var config = require("./config");
 
+var stdin = process.openStdin();
+stdin.addListener("data", function (d) {
+    EventHandler.OnCommand(d.toString().trim());
+});
+
 var client = mc.createClient(config);
 
-client.on('connect', function () {
-    console.info('Successfully connected to ' + host + ':' + port);
-});
+EventHandler.SetHandler(client);
+

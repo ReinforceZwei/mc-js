@@ -105,6 +105,9 @@ dist
 
 # vs files
 .vs/
+obj/
+bin/
 
 # Config file that contain account password
 config.js
+config.json
