@@ -6,7 +6,7 @@ var chatParser = require("./Chat/Chat");
 var color = require('ansi-color').set
 var client;
 
-module.exports = { SetHandler, OnCommand };
+module.exports = { SetHandler };
 
 function SetHandler(_client) {
     client = _client;
@@ -15,27 +15,15 @@ function SetHandler(_client) {
     client.on("disconnect", OnDisconnect);
     client.on("end", OnDisconnect);
     client.on('kick_disconnect', OnKick);
+    client.on('error', OnError);
 }
 
-// console command events
-function OnCommand(command) {
-    if (command.startsWith('/')) {
-        var args = command.slice(1).split(/ +/);
-        var commandName = args.shift().toLowerCase();
-        // TODO: Implement Command
-        switch (commandName) {
-            case 'quit':
-                client.end();
-                break;
-            default:
-                client.write("chat", { message: command });
-        }
-    } else {
-        client.write("chat", { message: command });
-    }
-}
+
 
 // packets events
+function OnError(err) {
+    console.error(err);
+}
 function OnChat(packet) {
     console.log(chatParser(JSON.parse(packet.message), {}));
 }
